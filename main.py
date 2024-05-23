@@ -12,15 +12,14 @@ async def main(args):
     local_save_path = D_CONF.PROCESS_DIR + "file.pdf" #as this function is unique for each request, no need for unifying inside the function's processing..
 
     directories = create_necessary_dir()
-    # download_pdf(digital_ocean_client, req_id, local_save_path)
-    # extract_pages(local_save_path, directories)
+    download_pdf(digital_ocean_client, req_id, local_save_path)
+    extract_pages(local_save_path, directories)
 
-    # box_n_path = tfgc_extraction(directories)
-    # await process_tfgc_output(box_n_path, directories)
+    box_n_path = tfgc_extraction(directories)
+    await process_tfgc_output(box_n_path, directories)
 
     box_n_path = mecr_extraction(directories)
     process_mecr_output(box_n_path, directories)
-    print(box_n_path)
 
 
 if __name__ == "__main__":
