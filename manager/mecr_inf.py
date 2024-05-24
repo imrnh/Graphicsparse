@@ -1,6 +1,6 @@
 import os
 from PIL import Image, ImageDraw, ImageFont
-from core.yolo_inference import YOLOInferenceManager
+from manager.yolo_inference import YOLOInferenceManager
 
 from utils.mecr_box_merger import make_mergeable_set, merge_from_set
 from utils.config import DL_MODEL_CONF
@@ -11,7 +11,7 @@ def mecr_extraction(directories):
     mecr_infr_obj  = YOLOInferenceManager(DL_MODEL_CONF.MECR_PATH)
 
     box_n_path = []
-    for image_path in image_path[:2]:
+    for image_path in image_path:
         box_n_path.append(mecr_infr_obj.inference(image_path))
 
     return box_n_path

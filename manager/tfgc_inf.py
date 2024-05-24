@@ -1,6 +1,6 @@
 import os
 from PIL import Image
-from core.yolo_inference import YOLOInferenceManager
+from manager.yolo_inference import YOLOInferenceManager
 from utils.image_ops import place_rectangle_over_image
 from utils.config import DL_MODEL_CONF
 
@@ -24,7 +24,7 @@ def tfgc_extraction(directories):
 
         tfgc_box_with_path = []
 
-        for image_path in os.listdir(directories['raw_images_dir'])[:5]:
+        for image_path in os.listdir(directories['raw_images_dir']):
             tfgc_out = tfgc_infr_obj.inference( directories['raw_images_dir'] + image_path)
             tfgc_box_with_path.append(tfgc_out)
 

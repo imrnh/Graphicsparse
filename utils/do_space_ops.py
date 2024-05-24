@@ -18,35 +18,30 @@ def create_dospaces_session():
     return client
 
 
-def dospace_upload(args, dosClient=None, req_id=None, insideReqFolder=True):
-    try:
-        if dosClient == None:
-            dosClient = create_dospaces_session()
 
-        file_content, file_name = args
-        if not isinstance(file_content, bytes):
-            file_content = file_content.encode()  # Convert to bytes if necessary
+def dospace_file_upload(do_space_client, file_content, folder_name, file_name, file_ext="txt"):
+    """
+        Take text content and upload a text file into a folder.
 
-        file_path = f'{req_id}/{file_name}.txt' if insideReqFolder else file_name
-        dosClient.put_object(
-            Bucket=DIGITAL_OCEAN_SPACE_CONF.BUCKET_NAME,
-            Key= file_path,
-            Body=file_content,
-            ACL='private',
-        )
+        params:
 
-        return True
+            do_space_client: File upload client.
+            file_content: Any file content. Can be image, video, text whatever.
+            folder_name: Valid folder name. Set to none if a single file outside folders.
+            file_name: Valid file name.
+            file_ext: Valid file extension.
 
-    except Exception as e:
-        print(f"Exception in digitalocean file upload {e}")
-        return False, str(e)
+    """
+    if do_space_client == None:
+        do_space_client = create_dospaces_session()
 
+    if not isinstance(file_content, bytes):
+        file_content = file_content.encode() # convert to bytes if necessary
 
+    if folder_name == None:
+        file_path = f"{file_name}.{file_ext}"
+    else:
+        file_path = f'{folder_name}/{file_name}.{file_ext}'
 
-# File upload test
-
-# doclient = create_dospaces_session()
-# text = "Hi, This is my text"
-# res = upload_file_to_do_spaces(doclient, text, 'priv', 'hambaa')
-# print(res)
-
+    do_space_client.put_object(Bucket=DIGITAL_OCEAN_SPACE_CONF.BUCKET_NAME,
+            Key= file_path, Body=file_content, ACL='private', )

@@ -11,7 +11,6 @@ def create_necessary_dir():
         "raw_images_dir" : D_CONF.PROCESS_DIR + "raw_images/",
         "pages__notfgc" : D_CONF.PROCESS_DIR + "pages__no-tfgc/",
         "tfgc_blocks" : D_CONF.PROCESS_DIR + "tfgc/",
-        "tfgc_combined_dir" : D_CONF.PROCESS_DIR + "tfgc_combined/",
         "pages__nomecr":  D_CONF.PROCESS_DIR + "pages__no-mecr/",
         "mecr_blocks": D_CONF.PROCESS_DIR + "mecr/"
     }
