@@ -12,7 +12,8 @@ def create_necessary_dir():
         "pages__notfgc" : D_CONF.PROCESS_DIR + "pages__no-tfgc/",
         "tfgc_blocks" : D_CONF.PROCESS_DIR + "tfgc/",
         "pages__nomecr":  D_CONF.PROCESS_DIR + "pages__no-mecr/",
-        "mecr_blocks": D_CONF.PROCESS_DIR + "mecr/"
+        "mecr_blocks": D_CONF.PROCESS_DIR + "mecr/",
+        "mecr_eqn_idx_maps" : D_CONF.PROCESS_DIR + "mecr_idx_map/"
     }
 
     os.makedirs(D_CONF.PROCESS_DIR, exist_ok=True)        

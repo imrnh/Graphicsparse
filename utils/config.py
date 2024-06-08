@@ -18,7 +18,7 @@ DIGITAL_OCEAN_SPACE_CONF = SimpleNamespace(
     DO_SPACE_ACCESS_KEY = os.getenv('DIGITAL_OCEAN_SPACE_ACCESS_KEY'),
     DO_SPACE_SECRET_KEY = os.getenv('DIGITAL_OCEAN_SECRET_KEY'),
     ENDPOINT_URL = 'https://nyc3.digitaloceanspaces.com', 
-    BUCKET_NAME = 'ecscr-space'
+    BUCKET_NAME = 'echospace'
 )
 
 PROMPTS_LOC_CONF = SimpleNamespace(

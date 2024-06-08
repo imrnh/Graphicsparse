@@ -1,3 +1,4 @@
 boto3
 ultralytics
 python_dotenv
+pdf2image

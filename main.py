@@ -3,6 +3,7 @@ from manager.pdf_to_images import create_necessary_dir, download_pdf, extract_pa
 from manager.tfgc_inf import tfgc_extraction, process_tfgc_output
 from manager.mecr_inf import mecr_extraction, process_mecr_output
 
+from utils.mecr_mapping_dict_writer import write_mecr_mapping_dict
 from utils.do_space_ops import create_dospaces_session
 from utils.zipping_necessary_files import zip_necessary, upload_necessary_zip
 from utils.config import D_CONF
@@ -18,14 +19,15 @@ async def main(args):
     local_save_path = D_CONF.PROCESS_DIR + "file.pdf" #as this function is unique for each request, no need for unifying inside the function's processing..
 
     directories = create_necessary_dir()
-    download_pdf(digital_ocean_client, req_id, local_save_path)
-    extract_pages(local_save_path, directories)
+    # download_pdf(digital_ocean_client, req_id, local_save_path)
+    # extract_pages(local_save_path, directories)
 
-    box_n_path = tfgc_extraction(directories)
-    await process_tfgc_output(box_n_path, directories)
+    # box_n_path = tfgc_extraction(directories)
+    # await process_tfgc_output(box_n_path, directories)
 
     box_n_path = mecr_extraction(directories)
-    process_mecr_output(box_n_path, directories)
+    image_mecr_idx_map = process_mecr_output(box_n_path, directories)
+    write_mecr_mapping_dict(directories, image_mecr_idx_map)
 
     zip_path = zip_necessary(directories)
     upload_necessary_zip(digital_ocean_client, zip_path, req_id)
@@ -35,5 +37,5 @@ async def main(args):
 
 
 if __name__ == "__main__":
-    dummy_args = {'req_id' : "1234", "secret_token" : os.getenv("REQUEST_SECRET_TOKEN")}
+    dummy_args = {'req_id' : "unqreq1", "secret_token" : os.getenv("REQUEST_SECRET_TOKEN")}
     asyncio.run(main(dummy_args))
