@@ -1,4 +1,5 @@
-# Graphicsparse
+# <center>Graphicsparse</center>
+<center>Extract figures and tables from a pdf.</center>
 
 ## Overview
 
