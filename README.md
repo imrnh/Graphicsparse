@@ -8,4 +8,4 @@ We made a dataset of one thousand research papers and extracted and labeled them
 # License
 check license.md file. <br>
 
-I've originally made that for my startup echoscript. 
+`I've originally made that for my side-project echoscript.` 
