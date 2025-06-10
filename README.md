@@ -3,3 +3,9 @@ Initially, a pdf file will be seperated into pages. You can specify if you want 
 
 ### About training
 We made a dataset of one thousand research papers and extracted and labeled them manually. The models are then trained on that data. 
+
+
+# License
+check license.md file. <br>
+
+I've originally made that for my startup echoscript. 
